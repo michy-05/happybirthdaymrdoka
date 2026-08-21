@@ -42,7 +42,7 @@ function WelcomePage() {
     <div className="page-bg flex min-h-screen flex-col items-center justify-center px-4 text-center">
       <div className="relative z-10 w-full max-w-2xl">
         {phase === "countdown" && (
-          <div className="animate-fade-in-scale">
+          <div>
             <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-champagne">
               Counting down to you
             </p>
