@@ -19,11 +19,6 @@ const COUNTDOWN_MS = 650;
 function WelcomePage() {
   const [phase, setPhase] = useState<"countdown" | "age" | "message">("countdown");
   const [count, setCount] = useState(COUNTDOWN_START);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (phase !== "countdown") return;
@@ -46,7 +41,7 @@ function WelcomePage() {
   return (
     <div className="page-bg flex min-h-screen flex-col items-center justify-center px-4 text-center">
       <div className="relative z-10 w-full max-w-2xl">
-        {phase === "countdown" && mounted && (
+        {phase === "countdown" && (
           <div className="animate-fade-in-scale">
             <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-champagne">
               Counting down to you
