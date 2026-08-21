@@ -30,19 +30,19 @@ const STORAGE_KEY = "birthday-letter";
 
 function LetterPage() {
   const [mounted, setMounted] = useState(false);
-  const [letter, setLetter] = useState(DEFAULT_LETTER);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
     const saved = typeof window !== "undefined" ? window.localStorage.getItem(STORAGE_KEY) : null;
-    if (saved) setLetter(saved);
+    if (saved && ref.current) {
+      ref.current.innerText = saved;
+    }
   }, []);
 
   const handleInput = () => {
     if (!ref.current) return;
     const value = ref.current.innerText;
-    setLetter(value);
     if (typeof window !== "undefined") {
       window.localStorage.setItem(STORAGE_KEY, value);
     }
@@ -60,17 +60,16 @@ function LetterPage() {
           </h1>
         </div>
 
-        <div className="letter-paper rounded-2xl p-8 sm:p-12">
+        <div className={`letter-paper rounded-2xl p-8 sm:p-12 ${mounted ? "animate-fade-in-up" : ""}`}>
           <div
             ref={ref}
             contentEditable
             suppressContentEditableWarning
             onInput={handleInput}
-            className={`min-h-[320px] whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground outline-none sm:text-xl ${mounted ? "animate-fade-in-up" : ""}`}
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="min-h-[320px] whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground outline-none sm:text-xl"
             aria-label="Editable love letter"
           >
-            {letter}
+            {DEFAULT_LETTER}
           </div>
 
           <div className="mt-8 flex items-center justify-between border-t border-border pt-6 text-sm text-muted-foreground">
