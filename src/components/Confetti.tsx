@@ -77,7 +77,7 @@ export function Confetti({
         gravity: 0.25 + Math.random() * 0.15,
         drag: 0.96,
         size: Math.random() * 6 + 4,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        color: COLORS[Math.floor(Math.random() * COLORS.length)] ?? COLORS[0],
         rotation: Math.random() * Math.PI * 2,
         rotationSpeed: (Math.random() - 0.5) * 0.2,
         opacity: 1,
