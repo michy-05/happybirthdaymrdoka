@@ -1,34 +1,43 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { Confetti } from "@/components/Confetti";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Happy Birthday, My Love — 25" },
-      { name: "description", content: "A birthday countdown for the love of my life." },
+      { name: "description", content: "A birthday count-up for the love of my life." },
       { property: "og:title", content: "Happy Birthday, My Love — 25" },
-      { property: "og:description", content: "A birthday countdown for the love of my life." },
+      { property: "og:description", content: "A birthday count-up for the love of my life." },
     ],
   }),
   component: WelcomePage,
 });
 
 const COUNT_TARGET = 25;
-const COUNT_MS = 220;
+
+// Delay per step: starts moderate, speeds up through the middle, then slows down as we reach 25.
+function stepDelay(index: number, totalSteps: number) {
+  const progress = index / totalSteps;
+  return 190 - 140 * Math.sin(progress * Math.PI);
+}
 
 function WelcomePage() {
   const [phase, setPhase] = useState<"countdown" | "age" | "message">("countdown");
   const [count, setCount] = useState(1);
+  const [confetti, setConfetti] = useState(false);
 
   useEffect(() => {
     if (phase !== "countdown") return;
 
     if (count < COUNT_TARGET) {
-      const timer = setTimeout(() => setCount((c) => c + 1), COUNT_MS);
+      const timer = setTimeout(() => setCount((c) => c + 1), stepDelay(count - 1, COUNT_TARGET - 1));
       return () => clearTimeout(timer);
     }
 
-    const hold = setTimeout(() => setPhase("age"), 700);
+    // Confetti blows out of the number 25 the moment it lands.
+    setConfetti(true);
+    const hold = setTimeout(() => setPhase("age"), 900);
     return () => clearTimeout(hold);
   }, [phase, count]);
 
@@ -108,6 +117,8 @@ function WelcomePage() {
         <span className="sparkle" style={{ top: "45%", left: "8%", animationDelay: "4s" }} />
         <span className="sparkle" style={{ bottom: "30%", left: "55%", animationDelay: "5s" }} />
       </div>
+
+      <Confetti active={confetti} originX={0.5} originY={0.35} particleCount={220} />
     </div>
   );
 }
