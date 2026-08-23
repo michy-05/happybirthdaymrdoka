@@ -24,12 +24,15 @@ interface Particle {
 }
 
 const COLORS = [
+  "#FFD700", // gold
+  "#FFEC8B", // light gold
+  "#FFFFFF", // white
+  "#FFC0CB", // pink
+  "#FF8C94", // rose
   "#E8B4A6", // rose-gold
   "#F4E4D4", // champagne
-  "#FFFFFF", // white
-  "#FFD700", // gold
-  "#C97B7B", // dusty rose
-  "#722F37", // wine
+  "#00D9FF", // aqua accent
+  "#FF6B9D", // hot pink
 ];
 
 export function Confetti({
