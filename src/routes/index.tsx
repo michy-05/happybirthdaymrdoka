@@ -13,22 +13,22 @@ export const Route = createFileRoute("/")({
   component: WelcomePage,
 });
 
-const COUNTDOWN_START = 25;
-const COUNTDOWN_MS = 650;
+const COUNT_TARGET = 25;
+const COUNT_MS = 220;
 
 function WelcomePage() {
   const [phase, setPhase] = useState<"countdown" | "age" | "message">("countdown");
-  const [count, setCount] = useState(COUNTDOWN_START);
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
     if (phase !== "countdown") return;
 
-    if (count > 1) {
-      const timer = setTimeout(() => setCount((c) => c - 1), COUNTDOWN_MS);
+    if (count < COUNT_TARGET) {
+      const timer = setTimeout(() => setCount((c) => c + 1), COUNT_MS);
       return () => clearTimeout(timer);
     }
 
-    const hold = setTimeout(() => setPhase("age"), COUNTDOWN_MS + 400);
+    const hold = setTimeout(() => setPhase("age"), 700);
     return () => clearTimeout(hold);
   }, [phase, count]);
 
@@ -44,7 +44,7 @@ function WelcomePage() {
         {phase === "countdown" && (
           <div>
             <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-champagne">
-              Counting down to you
+              Counting up to you
             </p>
             <div
               key={count}

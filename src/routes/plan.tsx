@@ -1,124 +1,142 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Heart, Utensils, Camera, Music, Gift, Moon } from "lucide-react";
+import { Heart } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 export const Route = createFileRoute("/plan")({
   head: () => ({
     meta: [
       { title: "Our Birthday Plan — Happy Birthday" },
-      { name: "description", content: "The perfect birthday plan for the perfect person." },
+      { name: "description", content: "An editable birthday plan poster for the perfect person." },
       { property: "og:title", content: "Our Birthday Plan — Happy Birthday" },
-      { property: "og:description", content: "The perfect birthday plan for the perfect person." },
+      { property: "og:description", content: "An editable birthday plan poster for the perfect person." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: PlanPage,
 });
 
-const planItems = [
-  {
-    time: "Morning",
-    title: "Breakfast in Bed",
-    description: "Start your 25th with your favorite breakfast, coffee, and a slow morning together.",
-    icon: Utensils,
-  },
-  {
-    time: "Late Morning",
-    title: "Photo Memory Lane",
-    description: "A little walk through our favorite memories—printed photos, laughter, and maybe a tear or two.",
-    icon: Camera,
-  },
-  {
-    time: "Afternoon",
-    title: "Adventure Time",
-    description: "A surprise activity I have been planning just for you. Dress comfy and bring your smile.",
-    icon: Gift,
-  },
-  {
-    time: "Evening",
-    title: "Dinner Date",
-    description: "Your favorite restaurant, your favorite dishes, and a toast to the year ahead.",
-    icon: Utensils,
-  },
-  {
-    time: "Night",
-    title: "Stargazing & Slow Songs",
-    description: "A blanket, the sky, a playlist, and us—ending the day exactly how it should be.",
-    icon: Music,
-  },
-  {
-    time: "Midnight",
-    title: "Wishes & Kisses",
-    description: "A quiet moment to make a wish, cut the cake, and remind you how loved you are.",
-    icon: Moon,
-  },
+const STORAGE_PREFIX = "birthday-poster:";
+
+function Editable({
+  id,
+  as: Tag = "p",
+  className,
+  children,
+}: {
+  id: string;
+  as?: "p" | "h1" | "h2" | "span";
+  className?: string;
+  children: string;
+}) {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem(STORAGE_PREFIX + id);
+    if (saved !== null && ref.current) ref.current.innerText = saved;
+  }, [id]);
+
+  return (
+    <Tag
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+      contentEditable
+      suppressContentEditableWarning
+      onInput={() => {
+        if (ref.current) window.localStorage.setItem(STORAGE_PREFIX + id, ref.current.innerText);
+      }}
+      className={`rounded-sm outline-none transition-colors focus:bg-rose-gold/10 ${className ?? ""}`}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+const rows = [
+  { id: "r1", time: "Morning", text: "Breakfast in bed & a slow start together" },
+  { id: "r2", time: "Late Morning", text: "Photo memory lane — our favourite moments" },
+  { id: "r3", time: "Afternoon", text: "A surprise adventure, planned just for you" },
+  { id: "r4", time: "Evening", text: "Dinner date at your favourite place" },
+  { id: "r5", time: "Night", text: "Stargazing, slow songs, and us" },
+  { id: "r6", time: "Midnight", text: "Cake, a wish, and all my love" },
 ];
 
 function PlanPage() {
   return (
     <div className="page-bg min-h-screen px-4 py-12 sm:px-6 lg:px-8">
-      <div className="relative z-10 mx-auto max-w-4xl">
-        <div className="mb-12 text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.3em] text-champagne">
-            Made just for you
-          </p>
-          <h1 className="mt-3 font-serif text-4xl font-bold text-gradient-gold sm:text-5xl">
-            Our Birthday Plan
-          </h1>
-          <p className="mx-auto mt-4 max-w-lg text-lg text-muted-foreground">
-            A whole day dedicated to celebrating you—because twenty-five only happens once.
-          </p>
-        </div>
+      <div className="relative z-10 mx-auto max-w-2xl">
+        <p className="mb-6 text-center text-sm text-muted-foreground">
+          Tap anything on the poster to edit it — your changes save automatically.
+        </p>
 
-        <div className="space-y-6">
-          {planItems.map((item, index) => (
-            <div
-              key={item.title}
-              className="group relative flex gap-5 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-colors hover:bg-card sm:gap-8 sm:p-8"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex flex-col items-center gap-2">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-rose-gold/20 text-rose-gold ring-1 ring-rose-gold/30">
-                  <item.icon size={22} aria-hidden="true" />
-                </div>
-                {index < planItems.length - 1 && (
-                  <div className="hidden h-full w-px bg-border sm:block" />
-                )}
-              </div>
-
-              <div className="flex-1">
-                <span className="text-xs font-semibold uppercase tracking-wider text-rose-gold">
-                  {item.time}
-                </span>
-                <h2 className="mt-1 font-serif text-xl font-semibold text-foreground sm:text-2xl">
-                  {item.title}
-                </h2>
-                <p className="mt-2 text-base leading-relaxed text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
+        <div className="letter-paper animate-fade-in-up rounded-2xl p-8 sm:p-12">
+          <div className="border border-rose-gold/30 p-6 sm:p-10">
+            <div className="text-center">
+              <Editable
+                id="kicker"
+                className="text-xs font-medium uppercase tracking-[0.4em] text-champagne"
+              >
+                Made just for you
+              </Editable>
+              <Editable
+                id="title"
+                as="h1"
+                className="mt-4 font-serif text-4xl font-bold leading-tight text-gradient-gold sm:text-6xl"
+              >
+                Our Birthday Plan
+              </Editable>
+              <Editable id="subtitle" className="mt-3 font-serif italic text-blush">
+                Twenty-five only happens once
+              </Editable>
             </div>
-          ))}
+
+            <div className="my-8 h-px bg-rose-gold/30" />
+
+            <div className="space-y-5">
+              {rows.map((row) => (
+                <div key={row.id} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
+                  <Editable
+                    id={`${row.id}-time`}
+                    as="span"
+                    className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
+                  >
+                    {row.time}
+                  </Editable>
+                  <Editable
+                    id={`${row.id}-text`}
+                    className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
+                  >
+                    {row.text}
+                  </Editable>
+                </div>
+              ))}
+            </div>
+
+            <div className="my-8 h-px bg-rose-gold/30" />
+
+            <Editable
+              id="footer"
+              className="text-center font-serif italic text-muted-foreground"
+            >
+              I cannot wait to spend every moment of this day with you. — Michelle
+            </Editable>
+          </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="mx-auto max-w-md text-lg font-serif italic text-blush">
-            “I cannot wait to spend every moment of this day with you.”
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              to="/letter"
-              className="inline-flex items-center justify-center rounded-full border border-rose-gold/40 bg-transparent px-6 py-3 text-sm font-semibold text-rose-gold transition-colors hover:bg-rose-gold/10"
-            >
-              Read the letter again
-            </Link>
-            <Link
-              to="/"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-gold px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-rose-gold/20 transition-transform hover:scale-105"
-            >
-              <Heart size={18} aria-hidden="true" />
-              Back to the start
-            </Link>
-          </div>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            to="/letter"
+            className="inline-flex items-center justify-center rounded-full border border-rose-gold/40 px-6 py-3 text-sm font-semibold text-rose-gold transition-colors hover:bg-rose-gold/10"
+          >
+            Read the letter again
+          </Link>
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-gold px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-rose-gold/20 transition-transform hover:scale-105"
+          >
+            <Heart size={18} aria-hidden="true" />
+            Back to the start
+          </Link>
         </div>
       </div>
 
