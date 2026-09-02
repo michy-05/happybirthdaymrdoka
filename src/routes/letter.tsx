@@ -80,10 +80,10 @@ function LetterPage() {
 
         <div className="mt-10 flex justify-center">
           <Link
-            to="/plan"
+            to="/invitation"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-rose-gold/20 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            Continue to our birthday plan
+            Continue to the invitation
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

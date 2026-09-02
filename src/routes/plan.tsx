@@ -1,56 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Heart } from "lucide-react";
-import { useEffect, useRef } from "react";
-
-export const Route = createFileRoute("/plan")({
-  head: () => ({
-    meta: [
-      { title: "Our Birthday Plan — Happy Birthday" },
-      { name: "description", content: "An editable birthday plan poster for the perfect person." },
-      { property: "og:title", content: "Our Birthday Plan — Happy Birthday" },
-      { property: "og:description", content: "An editable birthday plan poster for the perfect person." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: PlanPage,
-});
-
-const STORAGE_PREFIX = "birthday-poster:";
-
-function Editable({
-  id,
-  as: Tag = "p",
-  className,
-  children,
-}: {
-  id: string;
-  as?: "p" | "h1" | "h2" | "span";
-  className?: string;
-  children: string;
-}) {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_PREFIX + id);
-    if (saved !== null && ref.current) ref.current.innerText = saved;
-  }, [id]);
-
-  return (
-    <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      contentEditable
-      suppressContentEditableWarning
-      onInput={() => {
-        if (ref.current) window.localStorage.setItem(STORAGE_PREFIX + id, ref.current.innerText);
-      }}
-      className={`rounded-sm outline-none transition-colors focus:bg-rose-gold/10 ${className ?? ""}`}
-    >
-      {children}
-    </Tag>
-  );
-}
+import { Editable } from "@/components/Editable";
 
 const rows = [
   { id: "r1", time: "Morning", text: "Breakfast in bed & a slow start together" },
