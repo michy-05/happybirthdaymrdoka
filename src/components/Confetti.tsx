@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface ConfettiProps {
   active: boolean;
@@ -43,11 +43,11 @@ export function Confetti({
   duration = 3500,
 }: ConfettiProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [shown, setShown] = useState(false);
+  const firedRef = useRef(false);
 
   useEffect(() => {
-    if (!active || shown) return;
-    setShown(true);
+    if (!active || firedRef.current) return;
+    firedRef.current = true;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -136,9 +136,9 @@ export function Confetti({
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
     };
-  }, [active, originX, originY, particleCount, duration, shown]);
+  }, [active, originX, originY, particleCount, duration]);
 
-  if (!active && !shown) return null;
+  if (!active && !firedRef.current) return null;
 
   return (
     <canvas
