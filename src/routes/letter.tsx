@@ -73,8 +73,8 @@ function LetterPage() {
           </div>
 
           <div className="mt-8 flex items-center justify-between border-t border-border pt-6 text-sm text-muted-foreground">
-            <span>Tap the letter to edit it for him.</span>
-            <span className="font-serif italic text-rose-gold">With all my love</span>
+            <span>{"\n"}</span>
+            <span className="font-serif italic text-rose-gold">{"With all my love\nMrs. M, Doka"}</span>
           </div>
         </div>
 
