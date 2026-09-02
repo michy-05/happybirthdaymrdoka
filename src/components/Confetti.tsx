@@ -43,11 +43,11 @@ export function Confetti({
   duration = 3500,
 }: ConfettiProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [shown, setShown] = useState(false);
+  const firedRef = useRef(false);
 
   useEffect(() => {
-    if (!active || shown) return;
-    setShown(true);
+    if (!active || firedRef.current) return;
+    firedRef.current = true;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
