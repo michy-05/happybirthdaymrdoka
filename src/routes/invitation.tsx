@@ -93,7 +93,7 @@ function InvitationPage() {
             to="/plan"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-rose-gold/20 transition-transform hover:scale-105"
           >
-            Continue to our birthday plan
+            Wanna see the plans i have for you?
           </Link>
         </div>
       </div>
