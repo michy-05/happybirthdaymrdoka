@@ -136,9 +136,9 @@ export function Confetti({
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
     };
-  }, [active, originX, originY, particleCount, duration, shown]);
+  }, [active, originX, originY, particleCount, duration]);
 
-  if (!active && !shown) return null;
+  if (!active && !firedRef.current) return null;
 
   return (
     <canvas
