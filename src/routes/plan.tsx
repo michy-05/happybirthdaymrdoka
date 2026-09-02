@@ -80,11 +80,10 @@ function PlanPage() {
             Read the letter again
           </Link>
           <Link
-            to="/"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-gold px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-rose-gold/20 transition-transform hover:scale-105"
+            to="/dress-code"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-rose-gold/20 transition-transform hover:scale-105"
           >
-            <Heart size={18} aria-hidden="true" />
-            Back to the start
+            Continue to the dress code
           </Link>
         </div>
       </div>
