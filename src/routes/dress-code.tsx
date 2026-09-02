@@ -1,30 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Editable } from "@/components/Editable";
+import { DressCodeGraphic } from "@/components/BirthdayGraphics";
 
-export const Route = createFileRoute("/plan")({
+export const Route = createFileRoute("/dress-code")({
   head: () => ({
     meta: [
-      { title: "Our Birthday Plan — Happy Birthday" },
-      { name: "description", content: "An editable birthday plan poster for the perfect person." },
-      { property: "og:title", content: "Our Birthday Plan — Happy Birthday" },
-      { property: "og:description", content: "An editable birthday plan poster for the perfect person." },
+      { title: "Dress Code — Birthday Celebration" },
+      { name: "description", content: "An editable dress code poster for the birthday celebration." },
+      { property: "og:title", content: "Dress Code — Birthday Celebration" },
+      { property: "og:description", content: "An editable dress code poster for the birthday celebration." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: PlanPage,
+  component: DressCodePage,
 });
 
-const rows = [
-  { id: "r1", time: "Morning", text: "Breakfast in bed & a slow start together" },
-  { id: "r2", time: "Late Morning", text: "Photo memory lane — our favourite moments" },
-  { id: "r3", time: "Afternoon", text: "A surprise adventure, planned just for you" },
-  { id: "r4", time: "Evening", text: "Dinner date at your favourite place" },
-  { id: "r5", time: "Night", text: "Stargazing, slow songs, and us" },
-  { id: "r6", time: "Midnight", text: "Cake, a wish, and all my love" },
+const notes = [
+  { id: "dc1", label: "Him", value: "Something sharp — the shirt I love on you" },
+  { id: "dc2", label: "Her", value: "A long dress, soft gold jewellery" },
+  { id: "dc3", label: "Palette", value: "Wine, champagne, and rose gold" },
+  { id: "dc4", label: "Please avoid", value: "Anything you cannot dance in" },
 ];
 
-function PlanPage() {
+function DressCodePage() {
   return (
     <div className="page-bg min-h-screen px-4 py-12 sm:px-6 lg:px-8">
       <div className="relative z-10 mx-auto max-w-2xl">
@@ -35,41 +34,41 @@ function PlanPage() {
         <div className="letter-paper animate-fade-in-up rounded-2xl p-8 sm:p-12">
           <div className="border border-rose-gold/30 p-6 sm:p-10">
             <div className="text-center">
-              <Editable
-                id="kicker"
-                className="text-xs font-medium uppercase tracking-[0.4em] text-champagne"
-              >
-                Made just for you
+              <Editable id="dc-kicker" className="text-xs font-medium uppercase tracking-[0.4em] text-champagne">
+                What to wear
               </Editable>
+
+              <DressCodeGraphic className="mx-auto mt-6 h-40 w-56 text-rose-gold sm:h-48 sm:w-72" />
+
               <Editable
-                id="title"
+                id="dc-title"
                 as="h1"
                 className="mt-4 font-serif text-4xl font-bold leading-tight text-gradient-gold sm:text-6xl"
               >
-                Our Birthday Plan
+                Dress Code
               </Editable>
-              <Editable id="subtitle" className="mt-3 font-serif italic text-blush">
-                Twenty-five only happens once
+              <Editable id="dc-subtitle" className="mt-3 font-serif italic text-blush">
+                Elegant, warm, and a little romantic
               </Editable>
             </div>
 
             <div className="my-8 h-px bg-rose-gold/30" />
 
             <div className="space-y-5">
-              {rows.map((row) => (
-                <div key={row.id} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
+              {notes.map((n) => (
+                <div key={n.id} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
                   <Editable
-                    id={`${row.id}-time`}
+                    id={`${n.id}-label`}
                     as="span"
                     className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
                   >
-                    {row.time}
+                    {n.label}
                   </Editable>
                   <Editable
-                    id={`${row.id}-text`}
+                    id={`${n.id}-value`}
                     className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
                   >
-                    {row.text}
+                    {n.value}
                   </Editable>
                 </div>
               ))}
@@ -77,37 +76,32 @@ function PlanPage() {
 
             <div className="my-8 h-px bg-rose-gold/30" />
 
-            <Editable
-              id="footer"
-              className="text-center font-serif italic text-muted-foreground"
-            >
-              I cannot wait to spend every moment of this day with you. — Michelle
+            <Editable id="dc-footer" className="text-center font-serif italic text-muted-foreground">
+              Whatever you wear, you will still be the best looking one there. — Michelle
             </Editable>
           </div>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
-            to="/letter"
+            to="/plan"
             className="inline-flex items-center justify-center rounded-full border border-rose-gold/40 px-6 py-3 text-sm font-semibold text-rose-gold transition-colors hover:bg-rose-gold/10"
           >
-            Read the letter again
+            Back to the plan
           </Link>
           <Link
-            to="/dress-code"
+            to="/announcement"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-rose-gold/20 transition-transform hover:scale-105"
           >
-            Continue to the dress code
+            One last thing
           </Link>
         </div>
       </div>
 
-      {/* Decorative sparkles */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <span className="sparkle" style={{ top: "10%", left: "8%", animationDelay: "0s" }} />
-        <span className="sparkle" style={{ top: "30%", right: "12%", animationDelay: "2s" }} />
-        <span className="sparkle" style={{ bottom: "20%", right: "20%", animationDelay: "4s" }} />
-        <span className="sparkle" style={{ bottom: "35%", left: "15%", animationDelay: "5s" }} />
+        <span className="sparkle" style={{ top: "14%", right: "10%", animationDelay: "1s" }} />
+        <span className="sparkle" style={{ bottom: "18%", left: "12%", animationDelay: "3s" }} />
+        <span className="sparkle" style={{ top: "52%", left: "6%", animationDelay: "5s" }} />
       </div>
     </div>
   );

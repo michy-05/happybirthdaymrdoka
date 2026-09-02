@@ -10,12 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnnouncementRouteImport } from './routes/announcement'
+import { Route as DressCodeRouteImport } from './routes/dress-code'
+import { Route as InvitationRouteImport } from './routes/invitation'
 import { Route as LetterRouteImport } from './routes/letter'
 import { Route as PlanRouteImport } from './routes/plan'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnnouncementRoute = AnnouncementRouteImport.update({
+  id: '/announcement',
+  path: '/announcement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DressCodeRoute = DressCodeRouteImport.update({
+  id: '/dress-code',
+  path: '/dress-code',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvitationRoute = InvitationRouteImport.update({
+  id: '/invitation',
+  path: '/invitation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LetterRoute = LetterRouteImport.update({
@@ -31,30 +49,51 @@ const PlanRoute = PlanRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/announcement': typeof AnnouncementRoute
+  '/dress-code': typeof DressCodeRoute
+  '/invitation': typeof InvitationRoute
   '/letter': typeof LetterRoute
   '/plan': typeof PlanRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/announcement': typeof AnnouncementRoute
+  '/dress-code': typeof DressCodeRoute
+  '/invitation': typeof InvitationRoute
   '/letter': typeof LetterRoute
   '/plan': typeof PlanRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/announcement': typeof AnnouncementRoute
+  '/dress-code': typeof DressCodeRoute
+  '/invitation': typeof InvitationRoute
   '/letter': typeof LetterRoute
   '/plan': typeof PlanRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/letter' | '/plan'
+  fullPaths:
+    '/' | '/announcement' | '/dress-code' | '/invitation' | '/letter' | '/plan'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/letter' | '/plan'
-  id: '__root__' | '/' | '/letter' | '/plan'
+  to:
+    '/' | '/announcement' | '/dress-code' | '/invitation' | '/letter' | '/plan'
+  id:
+    | '__root__'
+    | '/'
+    | '/announcement'
+    | '/dress-code'
+    | '/invitation'
+    | '/letter'
+    | '/plan'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnnouncementRoute: typeof AnnouncementRoute
+  DressCodeRoute: typeof DressCodeRoute
+  InvitationRoute: typeof InvitationRoute
   LetterRoute: typeof LetterRoute
   PlanRoute: typeof PlanRoute
 }
@@ -66,6 +105,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/announcement': {
+      id: '/announcement'
+      path: '/announcement'
+      fullPath: '/announcement'
+      preLoaderRoute: typeof AnnouncementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dress-code': {
+      id: '/dress-code'
+      path: '/dress-code'
+      fullPath: '/dress-code'
+      preLoaderRoute: typeof DressCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invitation': {
+      id: '/invitation'
+      path: '/invitation'
+      fullPath: '/invitation'
+      preLoaderRoute: typeof InvitationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/letter': {
@@ -87,6 +147,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnnouncementRoute: AnnouncementRoute,
+  DressCodeRoute: DressCodeRoute,
+  InvitationRoute: InvitationRoute,
   LetterRoute: LetterRoute,
   PlanRoute: PlanRoute,
 }
