@@ -79,14 +79,14 @@ function WelcomePage() {
               My Love
             </h1>
             <p className="mx-auto mt-6 max-w-md text-lg text-muted-foreground">
-              Twenty-five looks beautiful on you. I made this little surprise for the most amazing man I know.
+              25 looks beautiful on you. I made this little surprise for the most amazing man I know.
             </p>
             <div className="mt-10">
               <Link
                 to="/letter"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-gold px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg shadow-rose-gold/20 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                Click here to continue
+                Let's go
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
