@@ -1,6 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Editable } from "@/components/Editable";
 
+export const Route = createFileRoute("/plan")({
+  head: () => ({
+    meta: [
+      { title: "Our Birthday Plan — Happy Birthday" },
+      { name: "description", content: "An editable birthday plan poster for the perfect person." },
+      { property: "og:title", content: "Our Birthday Plan — Happy Birthday" },
+      { property: "og:description", content: "An editable birthday plan poster for the perfect person." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: PlanPage,
+});
+
 const rows = [
   { id: "r1", time: "Morning", text: "Breakfast in bed & a slow start together" },
   { id: "r2", time: "Late Morning", text: "Photo memory lane — our favourite moments" },
