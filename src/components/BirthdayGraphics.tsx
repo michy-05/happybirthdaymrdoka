@@ -98,3 +98,130 @@ export function AnnouncementGraphic({ className }: { className?: string }) {
     </svg>
   );
 }
+
+export function ArrivalGraphic({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 120 120"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* door */}
+      <rect x="34" y="22" width="52" height="76" rx="4" />
+      <path d="M74 22v76" opacity="0.5" />
+      <circle cx="66" cy="62" r="3" />
+      {/* key */}
+      <circle cx="24" cy="52" r="7" />
+      <path d="M30 55l14 14M40 66l-4 4M44 62l-4 4" />
+    </svg>
+  );
+}
+
+export function SpeechGraphic({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 120 120"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* microphone */}
+      <rect x="48" y="18" width="24" height="44" rx="12" />
+      <path d="M36 52c0 14 10 22 24 22s24-8 24-22" />
+      <path d="M60 74v18M48 96h24" />
+      <path d="M54 32h12M54 42h12" opacity="0.5" />
+      {/* speech dots */}
+      <circle cx="24" cy="26" r="3" />
+      <circle cx="96" cy="30" r="3" />
+    </svg>
+  );
+}
+
+export function GiftGraphic({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 120 120"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* box */}
+      <rect x="26" y="52" width="68" height="46" rx="4" />
+      <path d="M60 52v46" />
+      {/* lid */}
+      <rect x="20" y="40" width="80" height="12" rx="4" />
+      {/* bow */}
+      <path d="M60 40c-8 0-14-5-14-11 0-5 5-8 10-7 5 1 4 8 4 18Z" />
+      <path d="M60 40c8 0 14-5 14-11 0-5-5-8-10-7-5 1-4 8-4 18Z" />
+      {/* sparkle */}
+      <path d="M96 22v8M92 26h8" />
+    </svg>
+  );
+}
+
+export function DinnerGraphic({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 120 120"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* cloche */}
+      <path d="M22 76c0-22 17-36 38-36s38 14 38 36" />
+      <circle cx="60" cy="32" r="4" />
+      {/* plate */}
+      <path d="M14 76h92" />
+      <path d="M28 90h64" />
+      {/* steam */}
+      <path d="M44 24c-3-4 3-6 0-10M76 24c-3-4 3-6 0-10" opacity="0.6" />
+      {/* candles */}
+      <path d="M26 20c2-3 4-5 4-8M94 20c2-3 4-5 4-8" opacity="0.5" />
+    </svg>
+  );
+}
+
+export function ShowGraphic({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 120 120"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* stage spotlight */}
+      <path d="M60 14v10" />
+      <path d="M44 24h32l-6 16H50l-6-16Z" />
+      <path d="M50 40 26 96M70 40l24 56" opacity="0.5" />
+      {/* stage floor */}
+      <path d="M18 96h84" />
+      {/* star performer */}
+      <path d="M60 62l5 10 11 1-8 8 2 11-10-6-10 6 2-11-8-8 11-1 5-10Z" />
+      {/* side stars */}
+      <circle cx="28" cy="30" r="2.5" />
+      <circle cx="94" cy="34" r="2.5" />
+    </svg>
+  );
+}
+
