@@ -98,3 +98,103 @@ export function AnnouncementGraphic({ className }: { className?: string }) {
     </svg>
   );
 }
+
+const iconProps = {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  "aria-hidden": true,
+} as const;
+
+export function BnbGraphic({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} {...iconProps}>
+      {/* house / BnB */}
+      <path d="M10 30 32 12l22 18" />
+      <path d="M16 28v24h32V28" />
+      {/* door */}
+      <path d="M27 52V38h10v14" />
+      {/* windows */}
+      <rect x="19" y="34" width="6" height="6" rx="1" opacity="0.6" />
+      <rect x="39" y="34" width="6" height="6" rx="1" opacity="0.6" />
+      {/* heart above door */}
+      <path d="M32 24c-2-2.5-5.5-1-5.5 1.5 0 2.5 3.5 4.5 5.5 6 2-1.5 5.5-3.5 5.5-6C37.5 23 34 21.5 32 24Z" />
+      {/* key */}
+      <circle cx="52" cy="48" r="3.5" />
+      <path d="M52 51.5V58M52 55h3" opacity="0.7" />
+    </svg>
+  );
+}
+
+export function SpeechGraphic({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} {...iconProps}>
+      {/* microphone */}
+      <rect x="26" y="8" width="12" height="22" rx="6" />
+      <path d="M18 28c0 8 6 14 14 14s14-6 14-14" />
+      <path d="M32 42v10M24 52h16" />
+      {/* sound waves */}
+      <path d="M50 14c2 2 3 5 3 8s-1 6-3 8" opacity="0.6" />
+      <path d="M11 14c-2 2-3 5-3 8s1 6 3 8" opacity="0.6" />
+      {/* hearts floating */}
+      <path d="M50 40c-1.2-1.5-3.3-.6-3.3.9 0 1.5 2.1 2.7 3.3 3.6 1.2-.9 3.3-2.1 3.3-3.6 0-1.5-2.1-2.4-3.3-.9Z" opacity="0.7" />
+    </svg>
+  );
+}
+
+export function GiftGraphic({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} {...iconProps}>
+      {/* box */}
+      <rect x="12" y="26" width="40" height="30" rx="3" />
+      {/* lid */}
+      <path d="M9 26h46" />
+      <path d="M12 20h40v6H12z" />
+      {/* ribbon */}
+      <path d="M32 20v36" />
+      <path d="M12 36h40" opacity="0.4" />
+      {/* bow */}
+      <path d="M32 20c-6 0-9-3.5-9-7 0-2.5 3-4 5.5-2.5C31 12 32 16 32 20Z" />
+      <path d="M32 20c6 0 9-3.5 9-7 0-2.5-3-4-5.5-2.5C33 12 32 16 32 20Z" />
+      {/* sparkles */}
+      <path d="M54 8l1.5 3.5L59 13l-3.5 1.5L54 18l-1.5-3.5L49 13l3.5-1.5L54 8Z" opacity="0.7" />
+    </svg>
+  );
+}
+
+export function DinnerGraphic({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} {...iconProps}>
+      {/* cloche */}
+      <path d="M10 40c0-12 10-20 22-20s22 8 22 20" />
+      <circle cx="32" cy="16" r="2.5" />
+      {/* plate */}
+      <path d="M6 40h52" />
+      <path d="M14 46h36" opacity="0.5" />
+      {/* steam */}
+      <path d="M26 12c-1.5-2 1.5-3 0-5M32 12c-1.5-2 1.5-3 0-5M38 12c-1.5-2 1.5-3 0-5" opacity="0.6" />
+      {/* candle */}
+      <path d="M56 26v8" />
+      <path d="M56 22c0-2 1.5-2.5 1.5-4 1 1 1.5 2 1.5 3 0 1.5-1.5 2-3 1Z" opacity="0.7" />
+    </svg>
+  );
+}
+
+export function ShowGraphic({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} {...iconProps}>
+      {/* stage spotlight */}
+      <path d="M32 8 16 52h32L32 8Z" opacity="0.5" />
+      {/* star performer */}
+      <path d="M32 34l3 6 6.5 1-4.7 4.5 1.1 6.5-5.9-3-5.9 3 1.1-6.5L22.5 41l6.5-1 3-6Z" />
+      {/* music notes */}
+      <circle cx="12" cy="22" r="2.5" />
+      <path d="M14.5 22V12l8-2v9" />
+      <circle cx="20" cy="19" r="2.5" />
+      {/* sparkle */}
+      <path d="M52 30l1.2 2.8 2.8 1.2-2.8 1.2L52 38l-1.2-2.8-2.8-1.2 2.8-1.2L52 30Z" opacity="0.7" />
+    </svg>
+  );
+}
