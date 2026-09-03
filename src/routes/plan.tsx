@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Editable } from "@/components/Editable";
+import {
+  ArrivalGraphic,
+  SpeechGraphic,
+  GiftGraphic,
+  DinnerGraphic,
+  ShowGraphic,
+} from "@/components/BirthdayGraphics";
 
 export const Route = createFileRoute("/plan")({
   head: () => ({
