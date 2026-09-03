@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Editable } from "@/components/Editable";
+import {
+  BnbGraphic,
+  SpeechGraphic,
+  GiftGraphic,
+  DinnerGraphic,
+  ShowGraphic,
+} from "@/components/BirthdayGraphics";
 
 export const Route = createFileRoute("/plan")({
   head: () => ({
@@ -16,12 +23,11 @@ export const Route = createFileRoute("/plan")({
 });
 
 const rows = [
-  { id: "r1", time: "Morning", text: "Breakfast in bed & a slow start together" },
-  { id: "r2", time: "Late Morning", text: "Photo memory lane — our favourite moments" },
-  { id: "r3", time: "Afternoon", text: "A surprise adventure, planned just for you" },
-  { id: "r4", time: "Evening", text: "Dinner date at your favourite place" },
-  { id: "r5", time: "Night", text: "Stargazing, slow songs, and us" },
-  { id: "r6", time: "Midnight", text: "Cake, a wish, and all my love" },
+  { id: "r1", time: "Arrival", text: "You arrive at the BnB — the night begins", Graphic: BnbGraphic },
+  { id: "r2", time: "Welcome", text: "A birthday speech from me, straight from the heart", Graphic: SpeechGraphic },
+  { id: "r3", time: "Surprise", text: "The gift reveal — something special just for you", Graphic: GiftGraphic },
+  { id: "r4", time: "Dinner", text: "A birthday dinner, made with love", Graphic: DinnerGraphic },
+  { id: "r5", time: "Finale", text: "A little show, performed only for you", Graphic: ShowGraphic },
 ];
 
 function PlanPage() {
@@ -55,22 +61,25 @@ function PlanPage() {
 
             <div className="my-8 h-px bg-rose-gold/30" />
 
-            <div className="space-y-5">
+            <div className="space-y-8">
               {rows.map((row) => (
-                <div key={row.id} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
-                  <Editable
-                    id={`${row.id}-time`}
-                    as="span"
-                    className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
-                  >
-                    {row.time}
-                  </Editable>
-                  <Editable
-                    id={`${row.id}-text`}
-                    className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
-                  >
-                    {row.text}
-                  </Editable>
+                <div key={row.id} className="flex items-start gap-4 sm:gap-6">
+                  <row.Graphic className="h-14 w-14 shrink-0 text-rose-gold sm:h-16 sm:w-16" />
+                  <div className="flex-1">
+                    <Editable
+                      id={`${row.id}-time`}
+                      as="span"
+                      className="text-xs font-semibold uppercase tracking-widest text-rose-gold"
+                    >
+                      {row.time}
+                    </Editable>
+                    <Editable
+                      id={`${row.id}-text`}
+                      className="mt-1 font-serif text-lg leading-relaxed text-card-foreground"
+                    >
+                      {row.text}
+                    </Editable>
+                  </div>
                 </div>
               ))}
             </div>
@@ -88,10 +97,10 @@ function PlanPage() {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
-            to="/letter"
+            to="/invitation"
             className="inline-flex items-center justify-center rounded-full border border-rose-gold/40 px-6 py-3 text-sm font-semibold text-rose-gold transition-colors hover:bg-rose-gold/10"
           >
-            Read the letter again
+            Back to the invitation
           </Link>
           <Link
             to="/dress-code"
