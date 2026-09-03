@@ -27,9 +27,7 @@ function DressCodePage() {
   return (
     <div className="page-bg min-h-screen px-4 py-12 sm:px-6 lg:px-8">
       <div className="relative z-10 mx-auto max-w-2xl">
-        <p className="mb-6 text-center text-sm text-muted-foreground">
-          Tap anything on the poster to edit it — your changes save automatically.
-        </p>
+        <p className="mb-6 text-center text-sm text-muted-foreground">{"\n"}</p>
 
         <div className="letter-paper animate-fade-in-up rounded-2xl p-8 sm:p-12">
           <div className="border border-rose-gold/30 p-6 sm:p-10">
