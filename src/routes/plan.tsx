@@ -35,7 +35,7 @@ function PlanPage() {
     <div className="page-bg min-h-screen px-4 py-12 sm:px-6 lg:px-8">
       <div className="relative z-10 mx-auto max-w-2xl">
         <p className="mb-6 text-center text-sm text-muted-foreground">
-          Tap anything on the poster to edit it — your changes save automatically.
+          {"\n"}
         </p>
 
         <div className="letter-paper animate-fade-in-up rounded-2xl p-8 sm:p-12">
