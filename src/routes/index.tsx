@@ -52,9 +52,9 @@ function WelcomePage() {
       <div className="relative z-10 w-full max-w-2xl">
         {phase === "countdown" && (
           <div>
-            <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-champagne">
-              Counting up to you
-            </p>
+             <p className="mb-6 text-sm font-medium uppercase tracking-[0.3em] text-champagne">
+               {"\n"}
+             </p>
             <div
               key={count}
               className="animate-count-bounce font-serif text-9xl font-bold text-rose-gold sm:text-[12rem]"
