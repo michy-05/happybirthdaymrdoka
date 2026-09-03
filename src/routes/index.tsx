@@ -79,7 +79,7 @@ function WelcomePage() {
               My Love
             </h1>
             <p className="mx-auto mt-6 max-w-md text-lg text-muted-foreground">
-              25 looks handsome on you. I made this little surprise for the most amazing man I know.
+              25  looks handsome on you. I made this little surprise for the most amazing man I know.
             </p>
             <div className="mt-10">
               <Link
