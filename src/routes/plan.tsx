@@ -1,12 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Editable } from "@/components/Editable";
-import {
-  ArrivalGraphic,
-  SpeechGraphic,
-  GiftGraphic,
-  DinnerGraphic,
-  ShowGraphic,
-} from "@/components/BirthdayGraphics";
 
 export const Route = createFileRoute("/plan")({
   head: () => ({
@@ -23,11 +16,12 @@ export const Route = createFileRoute("/plan")({
 });
 
 const rows = [
-  { id: "r1", time: "First", text: "Arrival at the BnB — you, walking into the surprise", Graphic: ArrivalGraphic },
-  { id: "r2", time: "Then", text: "A birthday speech from me to you", Graphic: SpeechGraphic },
-  { id: "r3", time: "Next", text: "The gift reveal — something special, just for you", Graphic: GiftGraphic },
-  { id: "r4", time: "After", text: "Birthday dinner, made to celebrate you", Graphic: DinnerGraphic },
-  { id: "r5", time: "Finally", text: "A little show, put together just for him", Graphic: ShowGraphic },
+  { id: "r1", time: "Morning", text: "Breakfast in bed & a slow start together" },
+  { id: "r2", time: "Late Morning", text: "Photo memory lane — our favourite moments" },
+  { id: "r3", time: "Afternoon", text: "A surprise adventure, planned just for you" },
+  { id: "r4", time: "Evening", text: "Dinner date at your favourite place" },
+  { id: "r5", time: "Night", text: "Stargazing, slow songs, and us" },
+  { id: "r6", time: "Midnight", text: "Cake, a wish, and all my love" },
 ];
 
 function PlanPage() {
@@ -61,25 +55,22 @@ function PlanPage() {
 
             <div className="my-8 h-px bg-rose-gold/30" />
 
-            <div className="space-y-8">
+            <div className="space-y-5">
               {rows.map((row) => (
-                <div key={row.id} className="flex items-center gap-5">
-                  <row.Graphic className="h-16 w-16 shrink-0 text-rose-gold sm:h-20 sm:w-20" />
-                  <div className="flex-1">
-                    <Editable
-                      id={`${row.id}-time`}
-                      as="span"
-                      className="text-xs font-semibold uppercase tracking-widest text-rose-gold"
-                    >
-                      {row.time}
-                    </Editable>
-                    <Editable
-                      id={`${row.id}-text`}
-                      className="mt-1 font-serif text-lg leading-relaxed text-card-foreground"
-                    >
-                      {row.text}
-                    </Editable>
-                  </div>
+                <div key={row.id} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
+                  <Editable
+                    id={`${row.id}-time`}
+                    as="span"
+                    className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
+                  >
+                    {row.time}
+                  </Editable>
+                  <Editable
+                    id={`${row.id}-text`}
+                    className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
+                  >
+                    {row.text}
+                  </Editable>
                 </div>
               ))}
             </div>
