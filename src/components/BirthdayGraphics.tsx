@@ -99,7 +99,7 @@ export function AnnouncementGraphic({ className }: { className?: string }) {
   );
 }
 
-function Icon({ className, children }: { className?: string; children: React.ReactNode }) {
+function Icon({ className, children }: { className?: string | undefined; children: React.ReactNode }) {
   return (
     <svg
       viewBox="0 0 64 64"
