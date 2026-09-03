@@ -61,22 +61,25 @@ function PlanPage() {
 
             <div className="my-8 h-px bg-rose-gold/30" />
 
-            <div className="space-y-5">
+            <div className="space-y-8">
               {rows.map((row) => (
-                <div key={row.id} className="flex flex-col gap-1 sm:flex-row sm:gap-6">
-                  <Editable
-                    id={`${row.id}-time`}
-                    as="span"
-                    className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
-                  >
-                    {row.time}
-                  </Editable>
-                  <Editable
-                    id={`${row.id}-text`}
-                    className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
-                  >
-                    {row.text}
-                  </Editable>
+                <div key={row.id} className="flex items-center gap-5">
+                  <row.Graphic className="h-16 w-16 shrink-0 text-rose-gold sm:h-20 sm:w-20" />
+                  <div className="flex-1">
+                    <Editable
+                      id={`${row.id}-time`}
+                      as="span"
+                      className="text-xs font-semibold uppercase tracking-widest text-rose-gold"
+                    >
+                      {row.time}
+                    </Editable>
+                    <Editable
+                      id={`${row.id}-text`}
+                      className="mt-1 font-serif text-lg leading-relaxed text-card-foreground"
+                    >
+                      {row.text}
+                    </Editable>
+                  </div>
                 </div>
               ))}
             </div>
