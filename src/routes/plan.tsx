@@ -23,12 +23,11 @@ export const Route = createFileRoute("/plan")({
 });
 
 const rows = [
-  { id: "r1", time: "Morning", text: "Breakfast in bed & a slow start together" },
-  { id: "r2", time: "Late Morning", text: "Photo memory lane — our favourite moments" },
-  { id: "r3", time: "Afternoon", text: "A surprise adventure, planned just for you" },
-  { id: "r4", time: "Evening", text: "Dinner date at your favourite place" },
-  { id: "r5", time: "Night", text: "Stargazing, slow songs, and us" },
-  { id: "r6", time: "Midnight", text: "Cake, a wish, and all my love" },
+  { id: "r1", time: "First", text: "Arrival at the BnB — you, walking into the surprise", Graphic: ArrivalGraphic },
+  { id: "r2", time: "Then", text: "A birthday speech from me to you", Graphic: SpeechGraphic },
+  { id: "r3", time: "Next", text: "The gift reveal — something special, just for you", Graphic: GiftGraphic },
+  { id: "r4", time: "After", text: "Birthday dinner, made to celebrate you", Graphic: DinnerGraphic },
+  { id: "r5", time: "Finally", text: "A little show, put together just for him", Graphic: ShowGraphic },
 ];
 
 function PlanPage() {
