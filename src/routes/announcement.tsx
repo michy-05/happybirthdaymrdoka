@@ -45,15 +45,17 @@ function AnnouncementPage() {
               id="an-body"
               className="mx-auto max-w-md whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground"
             >
-              {`Write your surprise here — the news, the gift, the little secret you have been keeping all week.
-
-Whatever it is, it comes wrapped in all the love I have for you.`}
+              {`You know i love you but,
+kindly be on time.
+We have a very strict schedule,
+but it will be worth your while my love.`}
             </Editable>
 
             <div className="my-8 h-px bg-rose-gold/30" />
 
-            <Editable id="an-signoff" className="font-serif italic text-blush">
-              Happy twenty-fifth, my love. — Michelle
+            <Editable id="an-signoff" className="whitespace-pre-wrap font-serif italic text-blush">
+              {`Happy 25th birthday, my love. 
+Michelle`}
             </Editable>
           </div>
         </div>

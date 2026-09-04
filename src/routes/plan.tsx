@@ -23,11 +23,11 @@ export const Route = createFileRoute("/plan")({
 });
 
 const rows = [
-  { id: "r1", time: "Arrival", text: "You arrive at the BnB — the night begins", Graphic: BnbGraphic },
-  { id: "r2", time: "Welcome", text: "A birthday speech from me, straight from the heart", Graphic: SpeechGraphic },
-  { id: "r3", time: "Surprise", text: "The gift reveal — something special just for you", Graphic: GiftGraphic },
-  { id: "r4", time: "Dinner", text: "A birthday dinner, made with love", Graphic: DinnerGraphic },
-  { id: "r5", time: "Finale", text: "A little show, performed only for you", Graphic: ShowGraphic },
+  { id: "r1", time: "1900 HOURS", text: "You arrive at the BnB ", Graphic: BnbGraphic },
+  { id: "r2", time: "Welcome", text: "A birthday speech from yours truly", Graphic: SpeechGraphic },
+  { id: "r3", time: "Surprise", text: "The gift reveal something special nyana just for you", Graphic: GiftGraphic },
+  { id: "r4", time: "Dinner", text: "Your birthday dinner", Graphic: DinnerGraphic },
+  { id: "r5", time: "Finale", text: "A little sumn sumn just for you", Graphic: ShowGraphic },
 ];
 
 function PlanPage() {
@@ -45,17 +45,17 @@ function PlanPage() {
                 id="kicker"
                 className="text-xs font-medium uppercase tracking-[0.4em] text-champagne"
               >
-                Made just for you
+                {"\n"}
               </Editable>
               <Editable
                 id="title"
                 as="h1"
                 className="mt-4 font-serif text-4xl font-bold leading-tight text-gradient-gold sm:text-6xl"
               >
-                Our Birthday Plan
+                Baby I've Been Making Plans For YOU!
               </Editable>
               <Editable id="subtitle" className="mt-3 font-serif italic text-blush">
-                Twenty-five only happens once
+                You only turn 25 once my love
               </Editable>
             </div>
 
@@ -88,9 +88,10 @@ function PlanPage() {
 
             <Editable
               id="footer"
-              className="text-center font-serif italic text-muted-foreground"
+              className="whitespace-pre-wrap text-center font-serif italic text-muted-foreground"
             >
-              I cannot wait to spend every moment of this day with you. — Michelle
+              {`I cannot wait to spend every moment of this day with you. 
+Michelle`}
             </Editable>
           </div>
         </div>

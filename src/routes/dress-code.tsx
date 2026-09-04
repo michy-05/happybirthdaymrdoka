@@ -17,10 +17,10 @@ export const Route = createFileRoute("/dress-code")({
 });
 
 const notes = [
-  { id: "dc1", label: "Him", value: "Something sharp — the shirt I love on you" },
-  { id: "dc2", label: "Her", value: "A long dress, soft gold jewellery" },
-  { id: "dc3", label: "Palette", value: "Wine, champagne, and rose gold" },
-  { id: "dc4", label: "Please avoid", value: "Anything you cannot dance in" },
+  { id: "dc1", label: "Him", value: "Smart Casual" },
+  { id: "dc2", label: "Her", value: "Its a surprise" },
+  { id: "dc3", label: "PLEASE AVOID", value: "Street wear,\nAnything you cannot dance in" },
+  { id: "dc4", label: "\n", value: "\n" },
 ];
 
 function DressCodePage() {
@@ -58,13 +58,13 @@ function DressCodePage() {
                   <Editable
                     id={`${n.id}-label`}
                     as="span"
-                    className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
+                    className="shrink-0 whitespace-pre-wrap text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
                   >
                     {n.label}
                   </Editable>
                   <Editable
                     id={`${n.id}-value`}
-                    className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
+                    className="flex-1 whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground"
                   >
                     {n.value}
                   </Editable>
@@ -74,8 +74,9 @@ function DressCodePage() {
 
             <div className="my-8 h-px bg-rose-gold/30" />
 
-            <Editable id="dc-footer" className="text-center font-serif italic text-muted-foreground">
-              Whatever you wear, you will still be the best looking one there. — Michelle
+            <Editable id="dc-footer" className="whitespace-pre-wrap text-center font-serif italic text-muted-foreground">
+              {`Whatever you wear, you will still be the best looking one there. 
+ Michelle`}
             </Editable>
           </div>
         </div>

@@ -17,10 +17,10 @@ export const Route = createFileRoute("/invitation")({
 });
 
 const details = [
-  { id: "d1", label: "For", value: "My favourite person" },
-  { id: "d2", label: "Occasion", value: "His twenty-fifth birthday" },
-  { id: "d3", label: "Date", value: "Saturday, the whole day" },
-  { id: "d4", label: "Place", value: "Wherever we are, together" },
+  { id: "d1", label: "For", value: " Mr. Olen Doka" },
+  { id: "d2", label: "Occasion", value: "His 25th birthday" },
+  { id: "d3", label: "DATE\n\n\nTIME", value: "Friday, 11th September, 2026\n\n1900 hours" },
+  { id: "d4", label: "Place", value: "The BnB" },
 ];
 
 function InvitationPage() {
@@ -41,12 +41,14 @@ function InvitationPage() {
               <Editable
                 id="inv-title"
                 as="h1"
-                className="mt-4 font-serif text-4xl font-bold leading-tight text-gradient-gold sm:text-6xl"
+                className="mt-4 whitespace-pre-wrap font-serif text-4xl font-bold leading-tight text-gradient-gold sm:text-6xl"
               >
-                A Birthday Celebration
+                {`A 
+Silver
+Jubilee`}
               </Editable>
               <Editable id="inv-subtitle" className="mt-3 font-serif italic text-blush">
-                In honour of the birthday boy turning twenty-five
+                In honor of my baby turning 25
               </Editable>
             </div>
 
@@ -58,13 +60,13 @@ function InvitationPage() {
                   <Editable
                     id={`${d.id}-label`}
                     as="span"
-                    className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
+                    className="shrink-0 whitespace-pre-wrap text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
                   >
                     {d.label}
                   </Editable>
                   <Editable
                     id={`${d.id}-value`}
-                    className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
+                    className="flex-1 whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground"
                   >
                     {d.value}
                   </Editable>
@@ -74,8 +76,9 @@ function InvitationPage() {
 
             <div className="my-8 h-px bg-rose-gold/30" />
 
-            <Editable id="inv-footer" className="text-center font-serif italic text-muted-foreground">
-              Come as you are — the cake and I will be waiting. — Michelle
+              <Editable id="inv-footer" className="whitespace-pre-wrap text-center font-serif italic text-muted-foreground">
+              {`Come as you are , the cake and I will be waiting. 
+ Michelle`}
             </Editable>
           </div>
         </div>

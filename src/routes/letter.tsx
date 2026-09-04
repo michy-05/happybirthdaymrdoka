@@ -15,11 +15,17 @@ export const Route = createFileRoute("/letter")({
 
 const DEFAULT_LETTER = `My Love,
 
-On this day, twenty-five years ago, the world became brighter because you were born. And I cannot believe I get to love you.
+Happy 25th Birthday Sthandwa Sam! 
+Baby there's so much l want to say to but let me start off by saying thank you. Thank you for being the man that i need, thank you for always looking out for me, thank you for encouraging me to be a better person every single day, for being there for me, for being the reason i have strength to go through any day, for lighting up my days, for your patience, your kindness, your care... for loving me. Thank you for who you are to me Baby.
 
-You are my safe place, my favorite person, my biggest blessing. Every laugh, every hug, every quiet moment with you is a gift I never take for granted. Thank you for being exactly who you are—kind, strong, patient, and endlessly wonderful.
 
-As you step into 25, I want you to know that I am so proud of the man you are and so excited for the man you are becoming. I promise to stand beside you through every dream, every adventure, and every ordinary Tuesday.
+You are my best friend, my safe space, the love of my life and with you there's never a dull moment, every hug, every laugh, every kiss and moment l get to spent with you is a gift I'll never take for granted.  
+
+
+As you step into this new chapter of your life I want you to know that I am so proud of the man you are and so excited for the man you are becoming. I promise to stand beside you through every dream, every ambition, every breakthrough and even on days when life gets hard i want to always remember that I'm rooting for you from the sidelines and that I'm always here whenever you need me. For better or for worse, l got you, l got  your back and you can count on me because l know you'll make it, and I'll be right by your side when you do.
+
+
+l love you so much baby, always and forever.
 
 Happy birthday, my love. Here is to a year as beautiful as you are to me.
 
