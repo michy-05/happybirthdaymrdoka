@@ -58,13 +58,13 @@ function DressCodePage() {
                   <Editable
                     id={`${n.id}-label`}
                     as="span"
-                    className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
+                    className="shrink-0 whitespace-pre-wrap text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
                   >
                     {n.label}
                   </Editable>
                   <Editable
                     id={`${n.id}-value`}
-                    className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
+                    className="flex-1 whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground"
                   >
                     {n.value}
                   </Editable>

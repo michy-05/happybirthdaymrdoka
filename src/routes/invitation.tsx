@@ -41,7 +41,7 @@ function InvitationPage() {
               <Editable
                 id="inv-title"
                 as="h1"
-                className="mt-4 font-serif text-4xl font-bold leading-tight text-gradient-gold sm:text-6xl"
+                className="mt-4 whitespace-pre-wrap font-serif text-4xl font-bold leading-tight text-gradient-gold sm:text-6xl"
               >
                 {`A 
 Silver
@@ -60,13 +60,13 @@ Jubilee`}
                   <Editable
                     id={`${d.id}-label`}
                     as="span"
-                    className="shrink-0 text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
+                    className="shrink-0 whitespace-pre-wrap text-xs font-semibold uppercase tracking-widest text-rose-gold sm:w-32 sm:pt-1"
                   >
                     {d.label}
                   </Editable>
                   <Editable
                     id={`${d.id}-value`}
-                    className="flex-1 font-serif text-lg leading-relaxed text-card-foreground"
+                    className="flex-1 whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground"
                   >
                     {d.value}
                   </Editable>
