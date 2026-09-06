@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
-
 const STORAGE_PREFIX = "birthday-poster:";
+
+// Set to true only while the developer wants to edit text in the browser.
+const EDITING_ENABLED = false;
 
 export function Editable({
   id,
@@ -13,23 +14,13 @@ export function Editable({
   className?: string;
   children: string;
 }) {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_PREFIX + id);
-    if (saved !== null && ref.current) ref.current.innerText = saved;
-  }, [id]);
-
   return (
     <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
-      contentEditable
+      contentEditable={EDITING_ENABLED}
       suppressContentEditableWarning
-      onInput={() => {
-        if (ref.current) window.localStorage.setItem(STORAGE_PREFIX + id, ref.current.innerText);
-      }}
-      className={`rounded-sm outline-none transition-colors focus:bg-rose-gold/10 ${className ?? ""}`}
+      className={`rounded-sm outline-none transition-colors ${
+        EDITING_ENABLED ? "focus:bg-rose-gold/10" : "cursor-default"
+      } ${className ?? ""}`}
     >
       {children}
     </Tag>
