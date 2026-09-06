@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/letter")({
   head: () => ({
@@ -32,27 +32,12 @@ Happy birthday, my love. Here is to a year as beautiful as you are to me.
 Forever yours,
 Michelle`;
 
-const STORAGE_KEY = "birthday-letter";
-
 function LetterPage() {
   const [mounted, setMounted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
-    const saved = typeof window !== "undefined" ? window.localStorage.getItem(STORAGE_KEY) : null;
-    if (saved && ref.current) {
-      ref.current.innerText = saved;
-    }
   }, []);
-
-  const handleInput = () => {
-    if (!ref.current) return;
-    const value = ref.current.innerText;
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(STORAGE_KEY, value);
-    }
-  };
 
   return (
     <div className="page-bg min-h-screen px-4 py-12 sm:px-6 lg:px-8">
@@ -67,14 +52,7 @@ function LetterPage() {
         </div>
 
         <div className={`letter-paper rounded-2xl p-8 sm:p-12 ${mounted ? "animate-fade-in-up" : ""}`}>
-          <div
-            ref={ref}
-            contentEditable
-            suppressContentEditableWarning
-            onInput={handleInput}
-            className="min-h-[320px] whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground outline-none sm:text-xl"
-            aria-label="Editable love letter"
-          >
+          <div className="min-h-[320px] whitespace-pre-wrap font-serif text-lg leading-relaxed text-card-foreground sm:text-xl">
             {DEFAULT_LETTER}
           </div>
 
