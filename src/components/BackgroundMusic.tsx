@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import songAsset from "@/assets/every-kind-of-way.m4a.asset.json";
 
 /**
  * Plays the birthday song across the whole site.
@@ -11,7 +12,7 @@ export function BackgroundMusic() {
   const [blocked, setBlocked] = useState(false);
 
   useEffect(() => {
-    const audio = new Audio("/every-kind-of-way.mp3");
+    const audio = new Audio(songAsset.url);
     audio.loop = true;
     audio.volume = 0.7;
     audioRef.current = audio;
