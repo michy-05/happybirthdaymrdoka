@@ -3,29 +3,20 @@ import { useLocation } from "@tanstack/react-router";
 import songAsset from "@/assets/every-kind-of-way.m4a.asset.json";
 
 const FULL_VOLUME = 0.7;
-
-/**
- * Target volume per page — the song gently fades out as he nears the end,
- * going silent on the final announcement page.
- */
-const VOLUME_BY_PATH: Record<string, number> = {
-  "/": FULL_VOLUME,
-  "/letter": FULL_VOLUME,
-  "/invitation": FULL_VOLUME,
-  "/plan": FULL_VOLUME,
-  "/dress-code": 0.3,
-  "/announcement": 0,
-};
+const FADE_DURATION_MS = 4000;
+const ANNOUNCEMENT_FADE_DELAY_MS = 10000;
 
 /**
  * Plays the birthday song across the whole site.
  * Browsers block autoplay with sound, so the song starts on the very first
  * tap/click/keypress anywhere on the page, then keeps playing while he
- * moves through the pages, fading out as the journey ends.
+ * moves through the pages. On the final announcement page the song stays at
+ * full volume for 10 seconds before gently fading to silence.
  */
 export function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const fadeRef = useRef<number | null>(null);
+  const delayTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [blocked, setBlocked] = useState(false);
   const { pathname } = useLocation();
 
@@ -58,6 +49,7 @@ export function BackgroundMusic() {
       window.removeEventListener("pointerdown", unlock);
       window.removeEventListener("keydown", unlock);
       if (fadeRef.current) cancelAnimationFrame(fadeRef.current);
+      if (delayTimeoutRef.current) clearTimeout(delayTimeoutRef.current);
       audio.pause();
     };
   }, []);
@@ -67,30 +59,46 @@ export function BackgroundMusic() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const target = VOLUME_BY_PATH[pathname] ?? FULL_VOLUME;
-    if (fadeRef.current) cancelAnimationFrame(fadeRef.current);
+    const startFade = (target: number) => {
+      if (fadeRef.current) cancelAnimationFrame(fadeRef.current);
 
-    const durationMs = 4000;
-    const startVolume = audio.volume;
-    const startTime = performance.now();
+      const startVolume = audio.volume;
+      const startTime = performance.now();
 
-    const step = (now: number) => {
-      const t = Math.min((now - startTime) / durationMs, 1);
-      const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
-      audio.volume = startVolume + (target - startVolume) * eased;
-      if (t < 1) {
-        fadeRef.current = requestAnimationFrame(step);
-      } else {
-        fadeRef.current = null;
-        if (target === 0) audio.pause();
-        else if (audio.paused) audio.play().catch(() => setBlocked(true));
-      }
+      const step = (now: number) => {
+        const t = Math.min((now - startTime) / FADE_DURATION_MS, 1);
+        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+        audio.volume = startVolume + (target - startVolume) * eased;
+        if (t < 1) {
+          fadeRef.current = requestAnimationFrame(step);
+        } else {
+          fadeRef.current = null;
+          if (target === 0) audio.pause();
+          else if (audio.paused) audio.play().catch(() => setBlocked(true));
+        }
+      };
+      fadeRef.current = requestAnimationFrame(step);
     };
-    fadeRef.current = requestAnimationFrame(step);
+
+    if (delayTimeoutRef.current) {
+      clearTimeout(delayTimeoutRef.current);
+      delayTimeoutRef.current = null;
+    }
+
+    if (pathname === "/announcement") {
+      // Let him soak in the final page for 10 seconds before fading out.
+      delayTimeoutRef.current = setTimeout(() => {
+        startFade(0);
+      }, ANNOUNCEMENT_FADE_DELAY_MS);
+      // Make sure we're at full volume when the page first opens.
+      if (audio.volume !== FULL_VOLUME) startFade(FULL_VOLUME);
+      else if (audio.paused) audio.play().catch(() => setBlocked(true));
+    } else {
+      startFade(FULL_VOLUME);
+    }
 
     return () => {
       if (fadeRef.current) cancelAnimationFrame(fadeRef.current);
-      fadeRef.current = null;
     };
   }, [pathname]);
 
